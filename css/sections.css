@@ -462,6 +462,9 @@
     border: 1px solid #f1f5f9;
     border-radius: 2rem;
     transition: var(--transition-base);
+    display: flex;
+    gap: 1.5rem;
+    align-items: flex-start;
 }
 
 .value-item:hover {
@@ -470,8 +473,22 @@
 }
 
 .val-icon {
-    margin-bottom: 1.5rem;
+    flex-shrink: 0;
     color: var(--accent-blue);
+    width: 32px;
+    height: 32px;
+}
+
+.val-text h4 {
+    margin-bottom: 0.5rem;
+    font-size: 1.15rem;
+    color: var(--accent-navy);
+}
+
+.val-text p {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    margin: 0;
 }
 
 /* Payment */
