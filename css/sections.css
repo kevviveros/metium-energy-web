@@ -2,7 +2,8 @@
 .hero {
     position: relative;
     padding: 120px 0 90px;
-    background: linear-gradient(135deg, var(--accent-navy) 0%, #0f172a 100%);
+    background: #0f172a;
+    background: radial-gradient(circle at 50% 50%, #1e293b 0%, #0f172a 100%);
     color: #fff;
     overflow: hidden;
 }
@@ -11,7 +12,7 @@
     content: '';
     position: absolute;
     inset: 0;
-    background: radial-gradient(ellipse at 60% 50%, rgba(29,78,216,0.25) 0%, transparent 65%);
+    background: radial-gradient(ellipse at 60% 40%, rgba(29,78,216,0.15) 0%, transparent 70%);
     pointer-events: none;
 }
 
