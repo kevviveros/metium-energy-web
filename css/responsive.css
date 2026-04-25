@@ -56,13 +56,14 @@
     .section-header p     { font-size: 0.95rem; }
 
     /* Hero — imagen ABAJO del texto, botones en fila */
-    .hero                 { padding: 90px 0 50px; text-align: center; }
+    .hero                 { padding: 90px 0 50px; text-align: center; overflow: hidden; }
     .hero-grid            { grid-template-columns: 1fr; gap: 2rem; }
-    .hero h1              { font-size: clamp(2rem, 8vw, 2.8rem); line-height: 1.1; }
+    .hero h1              { font-size: clamp(1.8rem, 7vw, 2.4rem); line-height: 1.15; }
     .hero-subtitle        { font-size: 1rem; max-width: 100%; margin-bottom: 1.5rem; }
     .hero-btns            { flex-direction: column; gap: 0.75rem; align-items: stretch; max-width: 320px; margin: 0 auto; }
     .hero-btns .btn       { width: 100%; text-align: center; justify-content: center; padding: 1rem; font-size: 1rem; white-space: nowrap; }
-    .hero-visual          { order: 1; max-width: 280px; margin: 0 auto; }
+    .hero-visual          { order: 1; max-width: 320px; margin: 0 auto; }
+    .hero-visual img      { max-height: 380px; object-fit: contain; }
 
     /* Metrics — 2 columnas */
     .metrics-container-wrapper { margin: -1.5rem auto 0; width: calc(100% - 2rem); }
@@ -71,7 +72,8 @@
     .metric-item h4       { font-size: 1.8rem; }
 
     /* Brands */
-    .brands-grid-simple   { gap: 1.5rem; }
+    .brands-grid-simple   { gap: 1rem 1.5rem; justify-content: center; }
+    .brands-grid-simple div { font-size: 1rem; }
 
     /* About */
     .about-grid           { display: grid; grid-template-columns: 1fr; gap: 0; }
@@ -141,18 +143,24 @@
 
     /* Nav mobile — Botón completo */
     .nav-cta-btn span     { display: inline; font-size: 0.75rem; }
-    .nav-cta-btn          { width: auto; height: auto; padding: 0.5rem 0.8rem !important; border-radius: 2rem !important; }
+    .nav-cta-btn          { width: auto; height: auto; padding: 0.5rem 0.7rem !important; border-radius: 2rem !important; }
     .nav-cta-btn i        { width: 14px; height: 14px; margin-right: 0.2rem; }
+    .nav-toggle           { padding: 0.4rem; }
     .values-grid          { grid-template-columns: 1fr; }
 }
 
 /* Small phones */
 @media (max-width: 480px) {
-    .hero h1              { font-size: 1.9rem; }
+    .logo                 { font-size: 1.15rem; }
+    .hero h1              { font-size: 1.7rem; }
     .metrics-row-simple   { flex-direction: column; align-items: center; }
     .metric-item          { width: 100%; }
     .values-grid          { grid-template-columns: 1fr; }
 
     .hero-badge           { font-size: 0.75rem; padding: 0.5rem 1rem; }
-    nav.glass             { width: calc(100% - 1.5rem); padding: 0.6rem 1rem; }
+    nav.glass             { width: calc(100% - 1.5rem); padding: 0.5rem 0.8rem; }
+    .nav-cta-btn          { padding: 0.45rem 0.6rem !important; }
+    .nav-cta-btn span     { font-size: 0.7rem; }
+    .nav-cta-btn i        { width: 12px; height: 12px; }
+    .nav-toggle           { padding: 0.3rem; }
 }
