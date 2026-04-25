@@ -117,7 +117,7 @@
       background: rgba(37, 99, 235, 0.1); border: 1px solid rgba(255, 255, 255, 0.1);
       border-radius: 3rem; font-size: 0.85rem; font-weight: 700; color: #93c5fd; margin-bottom: 2rem;
     }
-    .hero h1 { font-family: 'Outfit', sans-serif; font-size: clamp(2.8rem, 7vw, 4.5rem); line-height: 1; margin-bottom: 2rem; letter-spacing: -2px; }
+    .hero h1 { font-family: 'Outfit', sans-serif; font-size: clamp(2.8rem, 7vw, 4.5rem); line-height: 1.15; margin-bottom: 2rem; letter-spacing: -1px; }
     .hero p { font-size: 1.25rem; opacity: 0.8; max-width: 650px; margin: 0 auto; line-height: 1.4; }
 
     /* Main Calculator Core */
@@ -226,10 +226,15 @@
     }
 
     @media (max-width: 480px) {
-      .hero h1 { font-size: 1.8rem; }
+      nav.glass { padding: 0.6rem 1rem; }
+      .logo { font-size: 1.2rem; }
+      .nav-cta { padding: 0.6rem 1.2rem; font-size: 0.85rem; }
+      .hero h1 { font-size: 2rem; line-height: 1.1; letter-spacing: -0.5px; }
       .num-panels { font-size: 4rem; }
       .stats-grid { grid-template-columns: 1fr; }
       .step-header h2 { font-size: 1.4rem; }
+      .calc-side-left, .calc-side-right { padding: 1.5rem 1rem; }
+      .calc-wrapper { padding: 0 0.5rem; }
     }
   </style>
 </head>
