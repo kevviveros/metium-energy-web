@@ -19,18 +19,30 @@ document.addEventListener('DOMContentLoaded', () => {
     const navLinks  = document.getElementById('navLinks');
 
     if (navToggle && navLinks) {
-        navToggle.addEventListener('click', () => {
-            navLinks.classList.toggle('active');
+        const toggleMenu = (show) => {
+            const isShowing = show !== undefined ? show : !navLinks.classList.contains('active');
+            navLinks.classList.toggle('active', isShowing);
             const icon = navToggle.querySelector('i');
-            icon.setAttribute('data-lucide', navLinks.classList.contains('active') ? 'x' : 'menu');
-            lucide.createIcons();
+            if (icon) {
+                icon.setAttribute('data-lucide', isShowing ? 'x' : 'menu');
+                if (typeof lucide !== 'undefined') lucide.createIcons();
+            }
+        };
+
+        navToggle.addEventListener('click', (e) => {
+            e.stopPropagation();
+            toggleMenu();
+        });
+
+        document.addEventListener('click', (e) => {
+            if (navLinks.classList.contains('active') && !navLinks.contains(e.target) && !navToggle.contains(e.target)) {
+                toggleMenu(false);
+            }
         });
 
         navLinks.querySelectorAll('a').forEach(link => {
             link.addEventListener('click', () => {
-                navLinks.classList.remove('active');
-                navToggle.querySelector('i').setAttribute('data-lucide', 'menu');
-                lucide.createIcons();
+                toggleMenu(false);
             });
         });
     }
