@@ -51,8 +51,8 @@
     .container { padding: 0 1.25rem; }
 
     /* Section headers */
-    .section-header       { margin-bottom: 2rem; }
-    .section-header h2    { font-size: clamp(1.5rem, 6vw, 2rem); }
+    .section-header       { margin-bottom: 2rem; padding: 0 0.5rem; }
+    .section-header h2    { font-size: clamp(1.6rem, 7vw, 2.2rem); line-height: 1.15; max-width: 18ch; margin-left: auto; margin-right: auto; }
     .section-header p     { font-size: 0.95rem; }
 
     /* Hero — imagen ABAJO del texto, botones en fila */
