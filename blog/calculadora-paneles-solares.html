@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- ===== SEO Primary Tags ===== -->
+  <title>Calculadora Solar 2026: ¿Cómo saber cuántos paneles solares necesito? | Metium Energy</title>
+  <meta name="description" content="Calculadora solar gratuita para México. Descubre cuántos paneles necesitas exactamente con nuestra herramienta de ingeniería 2026. ¡Incluye bono de $2,000 MXN!">
+  <meta name="keywords" content="como saber cuantos paneles solares necesito, como calcular mis paneles solares, calculadora solar mexico, ahorro cfe paneles solares">
+  <meta name="author" content="Metium Energy Engineering Team">
+  <meta name="robots" content="index, follow">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@700;800;900&display=swap" rel="stylesheet">
+  <script src="https://unpkg.com/lucide"></script>
+
+  <style>
+    :root {
+      /* Palette Premium */
+      --brand-blue: #2563eb;
+      --brand-blue-deep: #1e40af;
+      --brand-blue-glow: rgba(37, 99, 235, 0.15);
+      --brand-gold: #f59e0b;
+      --brand-gold-glow: #fef3c7;
+      --brand-navy: #0f172a;
+      
+      --gradient-primary: linear-gradient(135deg, #2563eb 0%, #1e40af 100%);
+      --gradient-gold: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+      --gradient-dark: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+      
+      --text-main: #1e293b;
+      --text-secondary: #475569;
+      --text-muted: #94a3b8;
+      
+      --bg-light: #f8fafc;
+      --card-white: #ffffff;
+      
+      --shadow-premium: 0 10px 40px -6px rgba(15, 23, 42, 0.08);
+      --shadow-float: 0 25px 50px -12px rgba(15, 23, 42, 0.15);
+      
+      --radius-xl: 2.5rem;
+      --radius-lg: 1.5rem;
+      --transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .type-segments {
+        display: flex;
+        background: #f1f5f9;
+        padding: 5px;
+        border-radius: 1rem;
+        margin-bottom: 2rem;
+        border: 1px solid #e2e8f0;
+    }
+    .segment-btn {
+        flex: 1;
+        padding: 0.8rem;
+        text-align: center;
+        border-radius: 0.8rem;
+        cursor: pointer;
+        font-weight: 700;
+        font-size: 0.9rem;
+        transition: all 0.3s ease;
+        color: var(--text-muted);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+    }
+    .segment-btn.active {
+        background: #fff;
+        color: var(--brand-blue);
+        box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: var(--bg-light);
+      color: var(--text-main);
+      overflow-x: hidden;
+      line-height: 1.6;
+    }
+
+    .container { max-width: 1280px; margin: 0 auto; padding: 0 1.5rem; }
+
+    /* Navigation */
+    nav.glass {
+      position: fixed; top: 1rem; left: 50%; transform: translateX(-50%);
+      width: calc(100% - 2rem); max-width: 1200px; z-index: 1000;
+      padding: 0.8rem 2.5rem; display: flex; justify-content: space-between; align-items: center;
+      background: rgba(255, 255, 255, 0.85); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+      border: 1px solid rgba(37, 99, 235, 0.1); border-radius: 5rem; box-shadow: var(--shadow-premium);
+    }
+    .logo { font-family: 'Outfit', sans-serif; font-size: 1.5rem; font-weight: 900; color: var(--brand-navy); text-decoration: none; }
+    .logo span { color: var(--brand-blue); }
+    .nav-cta {
+      background: var(--brand-blue); color: #fff; padding: 0.75rem 1.8rem;
+      border-radius: 3rem; text-decoration: none; font-weight: 700; font-size: 0.9rem;
+      transition: var(--transition); box-shadow: 0 4px 15px var(--brand-blue-glow);
+    }
+    .nav-cta:hover { transform: translateY(-3px); box-shadow: 0 8px 20px var(--brand-blue-glow); }
+
+    /* Header */
+    .hero {
+      background: var(--gradient-dark); padding: 10rem 0 8rem; color: #fff; text-align: center;
+      position: relative; overflow: hidden;
+    }
+    .hero::before {
+        content: ''; position: absolute; width: 100%; height: 100%; top: 0; left: 0;
+        background: radial-gradient(circle at 80% 20%, rgba(37, 99, 235, 0.15) 0%, transparent 60%);
+    }
+    .hero-content { position: relative; z-index: 2; max-width: 900px; margin: 0 auto; }
+    .status-badge {
+      display: inline-flex; align-items: center; gap: 8px; padding: 0.6rem 1.2rem;
+      background: rgba(37, 99, 235, 0.1); border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 3rem; font-size: 0.85rem; font-weight: 700; color: #93c5fd; margin-bottom: 2rem;
+    }
+    .hero h1 { font-family: 'Outfit', sans-serif; font-size: clamp(2.8rem, 7vw, 4.5rem); line-height: 1; margin-bottom: 2rem; letter-spacing: -2px; }
+    .hero p { font-size: 1.25rem; opacity: 0.8; max-width: 650px; margin: 0 auto; line-height: 1.4; }
+
+    /* Main Calculator Core */
+    .calc-wrapper { max-width: 1200px; margin: -5rem auto 6rem; position: relative; z-index: 10; padding: 0 1rem; }
+    .calc-card-main {
+      background: #fff; border-radius: var(--radius-xl); overflow: hidden;
+      display: grid; grid-template-columns: 1fr 1.1fr; box-shadow: var(--shadow-float);
+      border: 1px solid rgba(255, 255, 255, 0.5);
+    }
+    @media (max-width: 1100px) {
+        .calc-card-main { grid-template-columns: 1fr; }
+    }
+
+    .calc-side-left { padding: 4rem 3.5rem; }
+    @media (max-width: 600px) { .calc-side-left { padding: 2.5rem 1.5rem; } }
+
+    .step-header { display: flex; align-items: center; gap: 1rem; margin-bottom: 2.5rem; }
+    .num-circle { 
+        width: 44px; height: 44px; background: var(--brand-blue); color: #fff; 
+        border-radius: 12px; display: flex; align-items: center; justify-content: center;
+        font-weight: 900; font-family: 'Outfit'; font-size: 1.2rem; box-shadow: 0 10px 20px var(--brand-blue-glow);
+    }
+    .step-header h2 { font-size: 1.8rem; letter-spacing: -0.5px; }
+
+    .form-group { margin-bottom: 2rem; position: relative; }
+    .label-row { display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.75rem; }
+    .label-row label { font-weight: 700; font-size: 0.95rem; color: var(--text-main); }
+    .help-btn { 
+        font-size: 0.75rem; font-weight: 700; color: var(--brand-blue); cursor: pointer;
+        display: flex; align-items: center; gap: 4px; padding: 4px 8px; border-radius: 6px;
+        background: var(--brand-blue-glow); transition: var(--transition);
+    }
+    .help-btn:hover { background: rgba(37, 99, 235, 0.25); }
+
+    .input-field {
+      width: 100%; padding: 1.2rem 1.5rem; border-radius: 1.2rem; border: 2px solid #f1f5f9;
+      background: #f8fafc; font-size: 1.2rem; font-weight: 700; font-family: 'Inter';
+      transition: var(--transition);
+    }
+    .input-field:focus { outline: none; border-color: var(--brand-blue); background: #fff; box-shadow: 0 0 0 5px var(--brand-blue-glow); }
+    
+    .select-field {
+        appearance: none; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='%232563eb' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");
+        background-repeat: no-repeat; background-position: right 1.5rem center; background-size: 1.2rem;
+    }
+
+    .primary-btn {
+      width: 100%; padding: 1.4rem; border-radius: 1.2rem; border: none;
+      background: var(--gradient-primary); color: #fff; font-size: 1.15rem; font-weight: 800;
+      cursor: pointer; transition: var(--transition); display: flex; align-items: center;
+      justify-content: center; gap: 12px; box-shadow: 0 15px 30px var(--brand-blue-glow);
+    }
+    .primary-btn:hover { transform: translateY(-4px); box-shadow: 0 20px 40px var(--brand-blue-glow); }
+
+    /* Results Side */
+    .calc-side-right {
+      background: #f8fafc; padding: 4rem 3.5rem; border-left: 1px solid #f1f5f9;
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+    }
+    .result-display { text-align: center; margin-bottom: 3rem; }
+    .num-panels { font-family: 'Outfit', sans-serif; font-size: 7.5rem; font-weight: 900; line-height: 0.9; color: var(--brand-navy); letter-spacing: -4px; }
+    .stats-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; width: 100%; margin-top: 2rem; }
+    .stat-card { background: #fff; padding: 1.25rem; border-radius: 1rem; border: 1px solid #f1f5f9; box-shadow: var(--shadow-premium); }
+    .stat-card i { color: var(--brand-blue); margin-bottom: 0.5rem; }
+    .stat-val { display: block; font-size: 1.3rem; font-weight: 800; font-family: 'Outfit'; }
+    .stat-lab { display: block; font-size: 0.75rem; color: var(--text-muted); font-weight: 700; }
+
+    .visual-comparison {
+        width: 100%; background: #fff; border-radius: 1.5rem; padding: 2rem;
+        box-shadow: var(--shadow-premium); border: 1px solid #f1f5f9; margin-bottom: 2rem;
+    }
+    .bill-row { display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem; }
+    .bill-label { font-weight: 700; font-size: 0.95rem; color: var(--text-main); }
+    .bill-value { font-family: 'Outfit'; font-size: 1.2rem; font-weight: 900; }
+
+
+    /* Modal */
+    .modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(15, 23, 42, 0.8); backdrop-filter: blur(8px); z-index: 2000; display: none; align-items: center; justify-content: center; padding: 1.5rem; }
+    .modal-container { background: #fff; border-radius: 2rem; max-width: 600px; width: 100%; padding: 2.5rem; position: relative; animation: modalFadeIn 0.4s; }
+    @keyframes modalFadeIn { from { opacity: 0; transform: translateY(20px); } }
+    .modal-img { width: 100%; border-radius: 1rem; border: 2px solid #f1f5f9; margin-top: 1.5rem; }
+
+    /* Article Guide */
+    .article-section { max-width: 900px; margin: 4rem auto 8rem; padding: 0 1rem; }
+    .article-section h2 { font-size: 2.5rem; margin: 4rem 0 1.5rem; letter-spacing: -1px; }
+    .article-section h3 { margin: 2rem 0 1rem; color: var(--brand-blue); }
+    .article-section p { font-size: 1.15rem; color: var(--text-secondary); margin-bottom: 2rem; }
+
+    .faq-grid { display: grid; gap: 1rem; margin-top: 2rem; }
+    .faq-item { background: #fff; border: 1px solid #f1f5f9; border-radius: 1.25rem; padding: 1.5rem; box-shadow: var(--shadow-premium); }
+    .footer { background: var(--brand-navy); color: #fff; padding: 6rem 0 3rem; }
+    .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 4rem; }
+    /* Mobile Adjustments */
+    @media (max-width: 768px) {
+      .hero { padding: 8rem 0 6rem; }
+      .hero h1 { font-size: 2.2rem; }
+      
+      .calc-wrapper { margin-top: -3rem; }
+      .calc-side-left, .calc-side-right { padding: 2.5rem 1.5rem; }
+      
+      .num-panels { font-size: 5rem; }
+      .stats-grid { gap: 1rem; }
+      
+      .article-section h2 { font-size: 1.8rem; }
+      .footer-grid { gap: 2rem; }
+    }
+
+    @media (max-width: 480px) {
+      .hero h1 { font-size: 1.8rem; }
+      .num-panels { font-size: 4rem; }
+      .stats-grid { grid-template-columns: 1fr; }
+      .step-header h2 { font-size: 1.4rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav class="glass">
+    <a href="../index.html" class="logo">METIUM<span>ENERGY</span></a>
+    <a href="../index.html#formulario" class="nav-cta">Cotizar Gratis</a>
+  </nav>
+
+  <header class="hero">
+    <div class="container hero-content">
+      <div class="status-badge"><i data-lucide="calculator" size="18"></i> Calculadora de Paneles Solares</div>
+      <h1>¿Cómo saber cuántos paneles solares necesito?</h1>
+      <p>Calcula tu ahorro real y el retorno de inversión exacto con nuestra herramienta de dimensionamiento industrial 2026.</p>
+    </div>
+  </header>
+
+  <div class="calc-wrapper">
+    <div class="calc-card-main animate-in" id="calculator-ui">
+      
+      <!-- LADO IZQUIERDO: INPUTS -->
+      <div class="calc-side-left">
+        <div id="step-1-ui">
+          <div class="step-header">
+            <h2>Tus datos de consumo</h2>
+          </div>
+
+          <div class="type-segments" id="user-type">
+            <div class="segment-btn active" data-type="casa" onclick="setType('casa')">
+              <i data-lucide="home" size="18"></i> Casa
+            </div>
+            <div class="segment-btn" data-type="negocio" onclick="setType('negocio')">
+              <i data-lucide="briefcase" size="18"></i> Negocio
+            </div>
+          </div>
+
+          <div class="form-group">
+            <div class="label-row">
+              <label for="consumption">Consumo Bimestral (kWh)</label>
+              <div class="help-btn" onclick="toggleModal(true)">
+                <i data-lucide="help-circle" size="14"></i> Ver ayuda
+              </div>
+            </div>
+            <input type="number" id="consumption" class="input-field" placeholder="Ej. 1200" oninput="liveUpdate()" min="0">
+          </div>
+
+          <div class="form-group">
+            <label for="location">Ubicación</label>
+            <select id="location" class="input-field select-field" onchange="liveUpdate()">
+              <option value="4.6" selected>Veracruz / Boca del Río</option>
+              <option value="5.2">Xalapa Coatepec</option>
+              <option value="5.8">Monterrey / Norte</option>
+              <option value="5.4">CDMX / Centro</option>
+              <option value="6.2">Sonora / Occidente</option>
+              <option value="5.0">Promedio Nacional</option>
+            </select>
+          </div>
+
+          <button onclick="goToStep2()" class="primary-btn" style="margin-top: 2rem;">
+            Cotizar mis Paneles <i data-lucide="chevron-right"></i>
+          </button>
+        </div>
+
+        <div id="step-2-ui" style="display: none;">
+          <div class="step-header">
+            <div class="num-circle">2</div>
+            <h2>Desbloquea tu Reporte Técnico</h2>
+          </div>
+          <form onsubmit="finalSubmit(event)" id="lead-form">
+            <div class="form-group"><label>Nombre Completo</label><input type="text" id="name" class="input-field" required></div>
+            <div class="form-group"><label>WhatsApp (10 dígitos)</label><input type="tel" id="whatsapp" class="input-field" pattern="[0-9]{10}" required></div>
+            <div class="form-group"><label>Email</label><input type="email" id="email" class="input-field" required></div>
+            <button type="submit" class="primary-btn" style="background: linear-gradient(135deg, #10b981 0%, #059669 100%); box-shadow: 0 15px 30px rgba(16, 185, 129, 0.3);">Obtener Cotización <i data-lucide="arrow-right"></i></button>
+          </form>
+          <button onclick="backToStep1()" style="background:none; border:none; color:var(--brand-blue); cursor:pointer; display:block; margin: 1rem auto">← Editar consumo</button>
+        </div>
+      </div>
+
+      <!-- LADO DERECHO: RESULTADOS -->
+      <div class="calc-side-right">
+        <div class="result-display">
+            <span style="font-size:0.9rem; font-weight:800; color:var(--brand-blue)">Necesitas Aproximadamente</span>
+            <div class="num-panels" id="panel-count">0</div>
+            <span style="font-size:1.5rem; font-weight:800; opacity:0.7">Paneles Solares</span>
+        </div>
+
+        <div class="visual-comparison">
+            <div class="bill-row"><span class="bill-label">Pago de luz promedio:</span><span class="bill-value" style="color:#ef4444;" id="cost-now">$0.00</span></div>
+            <div class="bill-row" style="margin-bottom:1.5rem; border-top:1px dashed #e2e8f0; padding-top:1rem;"><span class="bill-label">Pago de luz con paneles:</span><span class="bill-value" style="color:#10b981;">$59.00</span></div>
+            <div id="savings-text" style="color: #10b981; text-align: center; font-weight: 900; font-family: 'Outfit'; font-size: 1.1rem; margin-bottom: 0.5rem;">AHORRO TOTAL DEL 98.4%</div>
+        </div>
+
+        <p style="text-align: center; font-size: 0.95rem; font-weight: 700; color: var(--text-main); margin: 2rem 0 1rem; font-family: 'Inter', sans-serif;">Un sistema con esta cantidad de paneles equivale a:</p>
+        <div class="stats-grid">
+            <div class="stat-card"><i data-lucide="trending-down"></i><span class="stat-val" id="savings-val">$0</span><span class="stat-lab">Ahorro / Año</span></div>
+            <div class="stat-card"><i data-lucide="leaf"></i><span class="stat-val" id="co2-val">0 kg</span><span class="stat-lab">CO₂ Evitado</span></div>
+            <div class="stat-card"><i data-lucide="tree-pine"></i><span class="stat-val" id="trees-val">0</span><span class="stat-lab">Árboles / Año</span></div>
+            <div class="stat-card"><i data-lucide="zap"></i><span class="stat-val">620W</span><span class="stat-lab">Potencia Panel</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <article class="article-section">
+      <div style="text-align:center; margin-bottom:4rem">
+        <span class="status-badge" style="background:var(--brand-blue-glow); color:var(--brand-blue)">GUÍA TÉCNICA 2026</span>
+        <h2 style="margin-top:1rem">¿Cómo calcular correctamente tus paneles?</h2>
+        <p>Dimensionar un sistema fotovoltaico es una ciencia exacta. Aquí te explicamos los factores críticos que nuestra calculadora procesa en segundos.</p>
+      </div>
+      
+      <h3>1. Analiza tu recibo de CFE</h3>
+      <p>El dato más importante es tu consumo bimensual en <strong>kilowatts-hora (kWh)</strong>. Si quieres eliminar tu pago a CFE, debemos dimensionar el sistema para cubrir ese total. No te fijes solo en el último recibo; toma el promedio anual para considerar el verano, donde el uso de aires acondicionados dispara el consumo.</p>
+
+      <h3>2. Las Horas de Sol Pico (HSP)</h3>
+      <p>No todas las horas que el sol está afuera son iguales. Las <strong>Horas de Sol Pico</strong> representan las horas de radiación equivalente a 1000W/m². En México, dependiendo de tu estado, este valor oscila entre 4.4 y 6.5. Veracruz, por ejemplo, tiene un promedio anual de 4.6 HSP.</p>
+
+      <div style="background: var(--brand-blue-glow); padding: 3rem; border-radius: 2rem; margin: 3rem 0; border: 1px dashed var(--brand-blue); position: relative; overflow: hidden;">
+        <h4 style="margin-bottom: 1.5rem; color: var(--brand-blue); display: flex; align-items: center; gap: 10px;"><i data-lucide="calculator"></i> Fórmula Básica de Ingeniería:</h4>
+        <code style="display: block; background: #fff; padding: 1.5rem; border-radius: 1rem; font-size: 1.2rem; color: var(--brand-navy); font-weight: 700; box-shadow: var(--shadow-premium); border-left: 6px solid var(--brand-blue);">
+          Paneles = (Consumo Diario / (HSP × Potencia Panel × Eficiencia))
+        </code>
+        <p style="font-size: 0.95rem; margin-top: 1.5rem; color: var(--text-secondary);"><strong>Nota Técnica:</strong> La eficiencia estándar se estima en 0.8 (80%) para compensar pérdidas por temperatura, suciedad en paneles, caída de tensión en cableado y la eficiencia del inversor.</p>
+      </div>
+
+      <h2>Factores que influyen en el cálculo real</h2>
+      <p>Incluso con una calculadora exacta, hay variables externas que solo un levantamiento profesional en sitio puede medir con precisión:</p>
+      <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem; margin: 3rem 0;">
+        <div style="background:#fff; padding:2rem; border-radius:1.5rem; box-shadow:var(--shadow-premium);"><h4>Sombras</h4><p style="font-size:0.95rem; opacity:0.8">Un árbol o chimenea pueden reducir la eficiencia drásticamente.</p></div>
+        <div style="background:#fff; padding:2rem; border-radius:1.5rem; box-shadow:var(--shadow-premium);"><h4>Orientación</h4><p style="font-size:0.95rem; opacity:0.8">En México, los paneles deben mirar al SUR (Acimut 180°).</p></div>
+        <div style="background:#fff; padding:2rem; border-radius:1.5rem; box-shadow:var(--shadow-premium);"><h4>Inclinación</h4><p style="font-size:0.95rem; opacity:0.8">Debe coincidir con la latitud de tu ciudad para optimizar la cosecha solar.</p></div>
+      </div>
+
+      <div class="faq-grid">
+        <div class="faq-item"><h4>¿Cuántos paneles necesita una casa promedio?</h4><p>Suele requerir entre 6 y 10 paneles de alta potencia (550W+).</p></div>
+        <div class="faq-item"><h4>¿Qué pasa en días nublados?</h4><p>Los paneles siguen produciendo energía con luz difusa, aunque a un nivel menor.</p></div>
+      </div>
+  </article>
+
+  <div class="modal-overlay" id="help-modal">
+    <div class="modal-container">
+      <div style="display:flex; justify-content:space-between"><h3>Datos de Kw Consumidos</h3><i data-lucide="x" onclick="toggleModal(false)" style="cursor:pointer"></i></div>
+      <p style="margin-top:1rem">El dato de consumo bimensual se encuentra en el frente de tu recibo CFE.</p>
+      <img src="img/guia-recibo-cfe.jpg" alt="Ejemplo de recibo CFE indicando dónde encontrar el consumo de kWh para dimensionar paneles solares" title="Localiza tu consumo de kWh en el recibo de CFE" class="modal-img">
+      <button class="primary-btn" style="margin-top:2rem" onclick="toggleModal(false)">Entendido</button>
+    </div>
+  </div>
+
+  <footer class="footer">
+    <div class="container footer-grid">
+      <div><a href="#" class="logo" style="color:#fff">METIUM<span>ENERGY</span></a><p style="margin-top:1rem; opacity:0.6">Líderes en ingeniería solar en México.</p></div>
+      <div><h4>Recursos</h4><ul style="list-style:none; opacity:0.7"><li>Calculadora V.2026</li><li>Guía Veracruz</li></ul></div>
+      <div><h4>Contacto</h4><p style="opacity:0.7">contacto@metium.energy</p></div>
+    </div>
+  </footer>
+
+  <script>
+    lucide.createIcons();
+    function liveUpdate() {
+        let consumption = parseFloat(document.getElementById('consumption').value) || 0;
+        if (consumption < 0) consumption = 0;
+        const hsp = parseFloat(document.getElementById('location').value) || 5.0;
+        
+        // --- Cálculo de Paneles ---
+        const hspVeracruz = 4.6;
+        const genPerPanelReference = 170; // kWh bimestrales por panel en Veracruz (según HSP local)
+        const genPerPanelAdjusted = genPerPanelReference * (hsp / hspVeracruz);
+        
+        const rawPanels = consumption / genPerPanelAdjusted;
+        let numPanels = (rawPanels % 1) > 0.4 ? Math.ceil(rawPanels) : Math.floor(rawPanels);
+        
+        // Si el consumo es positivo pero el cálculo da 0, forzamos a 1 panel
+        if (consumption > 0 && numPanels === 0) numPanels = 1;
+        
+        document.getElementById('panel-count').textContent = isFinite(numPanels) && numPanels > 0 ? numPanels : 0;
+        
+        const locationSelect = document.getElementById('location');
+        const locationName = locationSelect.options[locationSelect.selectedIndex].text;
+        
+        // --- Tipo de Usuario (Casa vs Negocio) ---
+        const activeSegment = document.querySelector('.segment-btn.active');
+        const userType = activeSegment ? activeSegment.getAttribute('data-type') : 'casa';
+
+        let costBim = 0;
+
+        if (userType === 'negocio') {
+            // Tarifa Negocio Plana: $3.50 + 16% IVA = $4.06 por kWh
+            costBim = consumption * 4.06;
+        } else {
+            // Límite DAC según zona climática (bimestral) para Casa
+            let limiteDAC = 500; // Base (Tarifa 1)
+            if (locationName.includes("Veracruz")) limiteDAC = 1700; // Tarifa 1C
+            else if (locationName.includes("Xalapa")) limiteDAC = 1000; // Tarifa 1B
+            else if (locationName.includes("Sonora")) limiteDAC = 5000; // Tarifa 1F (muy alta)
+            
+            // Tarifas Casa: https://maerenovables.com/tarifas-domesticas-cfe/
+            const precioBasico = 1.14;      // Primeros 150 kWh
+            const precioIntermedio = 1.38;  // Siguientes 130 kWh
+            const precioExcedente = 3.80;   // Adicionales (Topado a 3.80)
+            const precioDAC = 3.80;        // Tarifa de Alto Consumo (Topado a 3.80)
+            
+            if (consumption > limiteDAC) {
+                costBim = consumption * precioDAC;
+            } else {
+                let tempCons = consumption;
+                // Básico
+                const basico = Math.min(tempCons, 150);
+                costBim += basico * precioBasico;
+                tempCons -= basico;
+                
+                if (tempCons > 0) {
+                    // Intermedio
+                    const intermedio = Math.min(tempCons, 130);
+                    costBim += intermedio * precioIntermedio;
+                    tempCons -= intermedio;
+                }
+                
+                if (tempCons > 0) {
+                    // Excedente
+                    costBim += tempCons * precioExcedente;
+                }
+            }
+        }
+
+        // El costo mínimo de CFE (DAP + Cargo Fijo) suele ser de ~$59 MXN
+        if (costBim < 59 && consumption > 0) costBim = 59;
+
+        document.getElementById('cost-now').textContent = '$' + Math.round(costBim).toLocaleString();
+        
+        // Ahorro dinámico
+        const percentage = costBim > 59 ? Math.round(((costBim - 59) / costBim) * 100) : 0;
+        document.getElementById('savings-text').textContent = `AHORRO TOTAL DEL ${percentage}%`;
+        
+        // Ahorro anual estimado (reemplazando el costo caro por el costo base de $59)
+        const annualSavings = (costBim - 59) * 6;
+        document.getElementById('savings-val').textContent = '$' + Math.round(annualSavings).toLocaleString();
+        
+        // Impacto Ambiental
+        const annualkWh = consumption * 6;
+        const co2 = Math.round(annualkWh * 0.45);
+        document.getElementById('co2-val').textContent = co2.toLocaleString() + ' kg';
+        document.getElementById('trees-val').textContent = Math.ceil(co2 / 20);
+    }
+    function goToStep2() { document.getElementById('step-1-ui').style.display = 'none'; document.getElementById('step-2-ui').style.display = 'block'; }
+    function backToStep1() { document.getElementById('step-1-ui').style.display = 'block'; document.getElementById('step-2-ui').style.display = 'none'; }
+    function toggleModal(show) { document.getElementById('help-modal').style.display = show ? 'flex' : 'none'; }
+    function setType(type) {
+        document.querySelectorAll('.segment-btn').forEach(btn => btn.classList.remove('active'));
+        document.querySelector(`.segment-btn[data-type="${type}"]`).classList.add('active');
+        liveUpdate();
+    }
+    function finalSubmit(event) {
+        event.preventDefault();
+        const message = `Hola Metium! Soy ${document.getElementById('name').value}. Consumo ${document.getElementById('consumption').value}kWh y necesito ${document.getElementById('panel-count').textContent} paneles.`;
+        window.location.href = `https://wa.me/5212282100749?text=${message}`;
+    }
+    liveUpdate();
+  </script>
+</body>
+</html>

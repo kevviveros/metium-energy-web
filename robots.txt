@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+Disallow: /gracias.html
+
+# Sitemap location
+Sitemap: https://metium.energy/sitemap.xml

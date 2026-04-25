@@ -1,0 +1,14 @@
+# Archivos temporales y de respaldo
+*.bak
+*.tmp
+.DS_Store
+
+# Directorios de herramientas
+.gemini/
+.git/
+node_modules/
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
