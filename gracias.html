@@ -53,11 +53,9 @@
             color: #0f172a;
             cursor: pointer;
             text-decoration: none;
-            display: flex;
-            align-items: center;
         }
         .logo span { color: #1d4ed8; }
-        .logo img { display: none; height: 28px; } /* Mobile logo hidden by default */
+        .logo-img { display: none; height: 28px; width: auto; object-fit: contain; }
 
         .nav-btn {
             background: #1d4ed8;
@@ -178,22 +176,14 @@
         }
         .wa-hint a { color: #60a5fa; }
 
-        /* Responsive adjustments */
         @media (max-width: 480px) {
-            .top-nav {
-                padding: 0.6rem 1rem;
-                width: calc(100% - 1.5rem);
-            }
-            .logo .text-logo { display: none; }
-            .logo img { display: block; }
-            .nav-btn {
-                padding: 0.5rem 0.8rem;
-                font-size: 0.85rem;
-                gap: 0.3rem;
-            }
+            .top-nav { padding: 0.6rem 1rem; width: calc(100% - 1.5rem); }
+            .logo { font-size: 1.15rem; display: flex; align-items: center; }
+            .logo-text { display: none; }
+            .logo-img { display: block; height: 24px; }
+            .nav-btn { padding: 0.5rem 1rem; font-size: 0.8rem; }
             .nav-btn svg { width: 14px; height: 14px; }
-            .card { padding: 2rem 1.5rem; margin-top: 6rem; }
-            .card h1 { font-size: 1.5rem; }
+            .card { padding: 2.5rem 1.5rem; margin-top: 6rem; }
         }
     </style>
 </head>
@@ -202,7 +192,8 @@
     <!-- Nav -->
     <nav class="top-nav">
         <a class="logo" href="index.html">
-            <img src="logo-metium.png" alt="Metium Energy Logo" />
+            <span class="logo-text">METIUM<span>ENERGY</span></span>
+            <img src="logo-metium.png" alt="Metium Energy" class="logo-img">
         </a>
         <a href="https://wa.me/5212282100749?text=Hola%2C%20me%20gustar%C3%ADa%20cotizar%20mis%20paneles" class="nav-btn">
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
@@ -220,13 +211,13 @@
             Un asesor experto se pondrá en contacto contigo muy pronto.
         </p>
 
-        <div style="display: flex; flex-direction: column; gap: 1.5rem; align-items: center; margin-top: 1.5rem;">
-            <a href="https://wa.me/5212282100749?text=Hola%2C%20me%20gustar%C3%ADa%20cotizar%20mis%20paneles" class="back-btn" style="background: #10b981; width: 100%; max-width: 280px; padding: 0.8rem 1.5rem; font-size: 0.95rem; justify-content: center; box-shadow: 0 10px 25px rgba(16, 185, 129, 0.4); transform: translateY(-2px);">
-                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="margin-right: 0.4rem;"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 1 1-7.6-13.2 8.38 8.38 0 0 1 3.8.9l5.2-1.3-1.3 5.2z"/></svg>
-                Hablar con un asesor
+        <div style="display: flex; flex-direction: column; gap: 1.5rem; align-items: center; margin-top: 1rem;">
+            <a href="https://wa.me/5212282100749?text=Hola%2C%20me%20gustar%C3%ADa%20cotizar%20mis%20paneles" class="back-btn" style="background: #10b981; width: auto; padding: 0.8rem 1.5rem; font-size: 0.95rem; justify-content: center; box-shadow: 0 10px 25px rgba(16, 185, 129, 0.3); transform: translateY(-2px);">
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="margin-right: 0.5rem;"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 1 1-7.6-13.2 8.38 8.38 0 0 1 3.8.9l5.2-1.3-1.3 5.2z"/></svg>
+                Agendar cita rápida
             </a>
             
-            <a href="index.html" style="color: #64748b; text-decoration: none; font-weight: 700; font-size: 1.1rem; display: flex; align-items: center; gap: 0.5rem; transition: color 0.2s; padding: 0.5rem;">
+            <a href="index.html" style="color: #64748b; text-decoration: none; font-weight: 700; font-size: 1.15rem; display: flex; align-items: center; gap: 0.5rem; transition: color 0.2s; padding: 0.5rem;">
                 <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
                 Volver al Inicio
             </a>
@@ -238,26 +229,9 @@
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             // Confetti
-            const duration = 3 * 1000;
-            const animationEnd = Date.now() + duration;
-            const defaults = { startVelocity: 30, spread: 360, ticks: 60, zIndex: 0 };
-
-            function randomInRange(min, max) {
-                return Math.random() * (max - min) + min;
-            }
-
-            const interval = setInterval(function() {
-                const timeLeft = animationEnd - Date.now();
-
-                if (timeLeft <= 0) {
-                    return clearInterval(interval);
-                }
-
-                const particleCount = 50 * (timeLeft / duration);
-                
-                confetti(Object.assign({}, defaults, { particleCount, origin: { x: randomInRange(0.1, 0.3), y: Math.random() - 0.2 } }));
-                confetti(Object.assign({}, defaults, { particleCount, origin: { x: randomInRange(0.7, 0.9), y: Math.random() - 0.2 } }));
-            }, 250);
+            setTimeout(() => {
+                confetti({ particleCount: 180, spread: 90, origin: { y: 0.5 }, colors: ['#3b82f6', '#1e293b', '#60a5fa', '#ffd700', '#10b981', '#ffffff', '#fbbf24'] });
+            }, 400);
         });
     </script>
 </body>

@@ -151,7 +151,9 @@
 
 /* Small phones */
 @media (max-width: 480px) {
-    .logo img             { height: 28px; }
+    .logo                 { display: flex; align-items: center; }
+    .logo-text            { display: none; }
+    .logo-img             { display: block; height: 26px; }
     .hero h1              { font-size: 1.7rem; }
     .metrics-row-simple   { flex-direction: column; align-items: center; }
     .metric-item          { width: 100%; }
