@@ -171,6 +171,12 @@
       justify-content: center; gap: 12px; box-shadow: 0 15px 30px var(--brand-blue-glow);
     }
     .primary-btn:hover { transform: translateY(-4px); box-shadow: 0 20px 40px var(--brand-blue-glow); }
+    
+    #btn-cotizar-mob { display: none; }
+    @media (max-width: 768px) {
+      #btn-cotizar-desk { display: none !important; }
+      #btn-cotizar-mob { display: flex !important; }
+    }
 
     /* Results Side */
     .calc-side-right {
@@ -294,7 +300,7 @@
             </select>
           </div>
 
-          <button onclick="goToStep2()" class="primary-btn" style="margin-top: 2rem;">
+          <button id="btn-cotizar-desk" onclick="goToStep2()" class="primary-btn" style="margin-top: 2rem;">
             Cotizar mis Paneles <i data-lucide="chevron-right"></i>
           </button>
         </div>
@@ -326,6 +332,10 @@
             <div class="bill-row"><span class="bill-label">Pago de luz promedio:</span><span class="bill-value" style="color:#ef4444;" id="cost-now">$0.00</span></div>
             <div class="bill-row" style="margin-bottom:1.5rem; border-top:1px dashed #e2e8f0; padding-top:1rem;"><span class="bill-label">Pago de luz con paneles:</span><span class="bill-value" style="color:#10b981;">$59.00</span></div>
             <div id="savings-text" style="color: #10b981; text-align: center; font-weight: 900; font-family: 'Outfit'; font-size: 1.1rem; margin-bottom: 0.5rem;">AHORRO TOTAL DEL 98.4%</div>
+            
+            <button id="btn-cotizar-mob" onclick="goToStep2()" class="primary-btn" style="margin-top: 1.5rem; padding: 1rem; font-size: 1rem;">
+                Cotizar mis Paneles <i data-lucide="chevron-right"></i>
+            </button>
         </div>
 
         <p style="text-align: center; font-size: 0.95rem; font-weight: 700; color: var(--text-main); margin: 2rem 0 1rem; font-family: 'Inter', sans-serif;">Un sistema con esta cantidad de paneles equivale a:</p>
@@ -478,8 +488,18 @@
         document.getElementById('co2-val').textContent = co2.toLocaleString() + ' kg';
         document.getElementById('trees-val').textContent = Math.ceil(co2 / 20);
     }
-    function goToStep2() { document.getElementById('step-1-ui').style.display = 'none'; document.getElementById('step-2-ui').style.display = 'block'; }
-    function backToStep1() { document.getElementById('step-1-ui').style.display = 'block'; document.getElementById('step-2-ui').style.display = 'none'; }
+    function goToStep2() { 
+        document.getElementById('step-1-ui').style.display = 'none'; 
+        document.getElementById('step-2-ui').style.display = 'block'; 
+        if(document.getElementById('btn-cotizar-mob')) document.getElementById('btn-cotizar-mob').style.display = 'none';
+        if(document.getElementById('btn-cotizar-desk')) document.getElementById('btn-cotizar-desk').style.display = 'none';
+    }
+    function backToStep1() { 
+        document.getElementById('step-1-ui').style.display = 'block'; 
+        document.getElementById('step-2-ui').style.display = 'none'; 
+        if(document.getElementById('btn-cotizar-mob')) document.getElementById('btn-cotizar-mob').style.display = '';
+        if(document.getElementById('btn-cotizar-desk')) document.getElementById('btn-cotizar-desk').style.display = '';
+    }
     function toggleModal(show) { document.getElementById('help-modal').style.display = show ? 'flex' : 'none'; }
     function setType(type) {
         document.querySelectorAll('.segment-btn').forEach(btn => btn.classList.remove('active'));
