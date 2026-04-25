@@ -129,7 +129,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 gastoCFE.reportValidity(); return;
             }
 
-            // Calcular
+            // Calcular datos para la redirección
             const data = solarData[gastoCFE.value] || solarData['menos-1000'];
             const params = new URLSearchParams({
                 panels:     data.panels,
@@ -139,7 +139,19 @@ document.addEventListener('DOMContentLoaded', () => {
                 trees:      data.trees
             });
 
-            window.location.href = `gracias.html?${params.toString()}`;
+            // Enviar a Netlify y luego redirigir
+            fetch("/", {
+                method: "POST",
+                headers: { "Content-Type": "application/x-www-form-urlencoded" },
+                body: new URLSearchParams(new FormData(form)).toString(),
+            })
+            .then(() => {
+                window.location.href = `gracias.html?${params.toString()}`;
+            })
+            .catch((error) => {
+                console.error("Error al enviar el formulario:", error);
+                window.location.href = `gracias.html?${params.toString()}`;
+            });
         });
 
         // Limpiar errores al escribir

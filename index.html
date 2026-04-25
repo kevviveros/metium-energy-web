@@ -897,7 +897,9 @@
                     <p>Obtén un presupuesto exacto y personalizado según tu consumo actual. Descubre cuánto puedes ahorrar con tecnología solar de alta eficiencia.</p>
                 </div>
                 <div class="contact-form-container glass">
-                    <form id="solarCalculator" name="contacto_metium" method="POST">
+                    <form id="solarCalculator" name="contacto_metium" method="POST" data-netlify="true" data-netlify-honeypot="bot-field">
+                        <input type="hidden" name="form-name" value="contacto_metium" />
+                        <p style="display:none;"><label>Don’t fill this out: <input name="bot-field" /></label></p>
                         <div class="form-row">
                             <div class="form-group">
                                 <label for="nombreCompleto">Nombre Completo</label>
