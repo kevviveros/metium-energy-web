@@ -8,8 +8,9 @@
     <meta name="description"
         content="Instalación de paneles solares en Veracruz con equipo propio e ingeniería Tier-1. Garantía de 25 años y ahorro real garantizado. Hecho como debe ser. Sin sorpresas.">
 
-    <!-- Preload Hero Image for LCP -->
-    <link rel="preload" href="hero-professional.webp" as="image">
+    <!-- Preload Hero Image for LCP (Conditional) -->
+    <link rel="preload" href="hero-professional (mobile).webp" as="image" media="(max-width: 768px)">
+    <link rel="preload" href="hero-professional.webp" as="image" media="(min-width: 769px)">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -169,10 +170,14 @@
                         </div>
                     </div>
                     <div class="hero-visual animate-fade-in" style="animation-delay: 0.2s;">
-                        <img src="hero-professional.webp"
-                            alt="Empresa de paneles solares en Veracruz, instalación residencial para ahorro de energía CFE"
-                            title="Expertos en instalación de paneles solares en Veracruz" fetchpriority="high" decoding="async"
-                            style="width: 100%; height: auto; filter: drop-shadow(0 20px 30px rgba(15, 23, 42, 0.1));">
+                        <picture>
+                            <source media="(max-width: 768px)" srcset="hero-professional (mobile).webp">
+                            <source media="(min-width: 769px)" srcset="hero-professional.webp">
+                            <img src="hero-professional.webp"
+                                alt="Empresa de paneles solares en Veracruz, instalación residencial para ahorro de energía CFE"
+                                title="Expertos en instalación de paneles solares en Veracruz" fetchpriority="high" decoding="async"
+                                style="width: 100%; height: auto; filter: drop-shadow(0 20px 30px rgba(15, 23, 42, 0.1));">
+                        </picture>
                     </div>
                 </div>
             </div>
