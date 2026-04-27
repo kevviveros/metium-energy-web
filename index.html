@@ -13,8 +13,10 @@
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Outfit:wght@700;800&display=swap">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Outfit:wght@700;800&display=swap"
-        rel="stylesheet">
+        rel="stylesheet" media="print" onload="this.media='all'">
+    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Outfit:wght@700;800&display=swap"></noscript>
 
     <link rel="canonical" href="https://metium.com.mx/">
 
@@ -32,7 +34,7 @@
     <link rel="stylesheet" href="css/sections.css?v=1.1">
     <link rel="stylesheet" href="css/responsive.css?v=1.1">
 
-    <script src="https://unpkg.com/lucide" crossorigin="anonymous"></script>
+    <!-- Lucide script moved to bottom for performance -->
 
     <!-- JSON-LD Structured Data (V3.0 Extended) -->
     <script type="application/ld+json">
@@ -115,7 +117,7 @@
     <meta http-equiv="Content-Security-Policy"
         content="default-src 'self'; script-src 'self' 'unsafe-inline' https://unpkg.com https://www.google.com/recaptcha/ https://www.gstatic.com/recaptcha/; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https://images.unsplash.com https://plus.unsplash.com; frame-src https://www.google.com/recaptcha/;">
     <meta http-equiv="X-XSS-Protection" content="1; mode=block">
-    <script src="https://www.google.com/recaptcha/api.js" async defer crossorigin="anonymous"></script>
+    <!-- reCAPTCHA moved to bottom and deferred for performance -->
 </head>
 
 <body class="mesh-bg">
@@ -975,8 +977,24 @@
         </div>
     </footer>
 
-    <script src="script.js"></script>
-    <script>lucide.createIcons();</script>
+    <script src="script.js" defer></script>
+    <script src="https://unpkg.com/lucide" crossorigin="anonymous" defer></script>
+    <script>
+        // Init Lucide after scripts load
+        window.addEventListener('load', () => {
+            if (window.lucide) lucide.createIcons();
+        });
+        
+        // Lazy load reCAPTCHA to save 243KB on initial load
+        window.addEventListener('DOMContentLoaded', () => {
+            setTimeout(() => {
+                let rc = document.createElement('script');
+                rc.src = "https://www.google.com/recaptcha/api.js";
+                rc.async = true; rc.defer = true;
+                document.body.appendChild(rc);
+            }, 3500);
+        });
+    </script>
 </body>
 
 </html>
