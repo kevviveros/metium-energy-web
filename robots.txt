@@ -3,4 +3,4 @@ Allow: /
 Disallow: /gracias.html
 
 # Sitemap location
-Sitemap: https://metium.energy/sitemap.xml
+Sitemap: https://metium.com.mx/sitemap.xml

@@ -1,7 +1,7 @@
 const fs = require('fs');
 const path = require('path');
 
-const BASE_URL = 'https://metium.energy/';
+const BASE_URL = 'https://metium.com.mx/';
 const ROOT_DIR = path.resolve(__dirname, '..');
 const EXCLUDE_FILES = ['gracias.html', '404.html'];
 
