@@ -86,7 +86,11 @@ nav.glass.scrolled {
     flex-shrink: 0;
 }
 
-.logo span {
+.logo-text {
+    display: inline-block;
+}
+
+.logo-text span {
     color: var(--accent-blue);
 }
 

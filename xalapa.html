@@ -17,10 +17,10 @@
         rel="stylesheet">
 
     <!-- Reusing our modular CSS system -->
-    <link rel="stylesheet" href="css/base.css">
-    <link rel="stylesheet" href="css/components.css">
-    <link rel="stylesheet" href="css/sections.css">
-    <link rel="stylesheet" href="css/responsive.css">
+    <link rel="stylesheet" href="css/base.css?v=1.1">
+    <link rel="stylesheet" href="css/components.css?v=1.1">
+    <link rel="stylesheet" href="css/sections.css?v=1.1">
+    <link rel="stylesheet" href="css/responsive.css?v=1.1">
 
     <script src="https://unpkg.com/lucide" crossorigin="anonymous"></script>
 
@@ -49,7 +49,10 @@
 
     <header>
         <nav class="glass">
-            <div class="logo" onclick="window.location.href='index.html'">METIUM<span>ENERGY</span></div>
+            <div class="logo" onclick="window.location.href='index.html'">
+                <div class="logo-text">METIUM<span>ENERGY</span></div>
+                <img src="logo-metium.webp" alt="Logo de Metium Energy" class="logo-img">
+            </div>
             <div class="nav-links">
             </div>
             <div class="nav-cta-group">
@@ -76,7 +79,7 @@
                     </div>
                     <div class="hero-visual">
                         <!-- We can use a different image or the same if optimized -->
-                        <img src="hero-professional.png" alt="Ingeniería Solar Metium en Xalapa para climas de montaña" title="Especialistas en ahorro solar para Xalapa" style="width: 100%; border-radius: 2rem;">
+                        <img src="hero-professional.webp" alt="Ingeniería Solar Metium en Xalapa para climas de montaña" title="Especialistas en ahorro solar para Xalapa" style="width: 100%; border-radius: 2rem;">
                     </div>
                 </div>
             </div>
@@ -84,7 +87,7 @@
         <!-- BRIEF BENEFITS -->
         <section class="section" style="padding: 20px 0;">
             <div class="container">
-                <div class="values-grid" style="background: #fff; padding: 2rem 1.5rem; border-radius: 2rem; box-shadow: var(--shadow-premium); gap: 1.5rem; display: flex; flex-direction: column;">
+                <div class="values-grid" style="background: #fff; padding: 2rem 1.5rem; border-radius: 2rem; box-shadow: var(--shadow-premium); gap: 1.5rem; display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));">
                     <div class="value-item" style="padding: 0; border: none; text-align: left; background: transparent; display: flex; gap: 1.25rem; align-items: flex-start;">
                         <div class="val-icon" style="color: var(--accent-blue); flex-shrink: 0;">
                             <i data-lucide="trending-down" style="width: 28px; height: 28px;"></i>
@@ -180,7 +183,7 @@
                         </a>
                     </div>
                     <div class="image-stack" style="padding: 0;">
-                        <img src="quienes-somos.jpg" alt="Instalación de paneles solares en Xalapa y Coatepec por ingenieros certificados" 
+                        <img src="quienes-somos.webp" alt="Instalación de paneles solares en Xalapa y Coatepec por ingenieros certificados" 
                              title="Proyectos solares exitosos en la zona de Xalapa"
                              style="width: 100%; height: 100%; object-fit: cover; border-radius: 2rem; box-shadow: var(--shadow-premium);">
                         <div style="position: absolute; bottom: 20px; left: -20px; background: #fff; padding: 1rem 1.5rem; border-radius: 1rem; box-shadow: var(--shadow-float); display: flex; align-items: center; gap: 0.75rem;">
