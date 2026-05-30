@@ -524,8 +524,17 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     }
     function finalSubmit(event) {
         event.preventDefault();
+        
+        // Push event to GTM DataLayer
+        window.dataLayer = window.dataLayer || [];
+        window.dataLayer.push({
+            'event': 'lead_calculadora_blog'
+        });
+        
         const message = `Hola, me gustaría calcular mis paneles`;
-        window.location.href = `https://wa.me/5212282100749?text=${message}`;
+        setTimeout(() => {
+            window.location.href = `https://wa.me/5212282100749?text=${message}`;
+        }, 300);
     }
     liveUpdate();
   </script>

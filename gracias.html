@@ -247,6 +247,18 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             setTimeout(() => {
                 confetti({ particleCount: 180, spread: 90, origin: { y: 0.5 }, colors: ['#3b82f6', '#1e293b', '#60a5fa', '#ffd700', '#10b981', '#ffffff', '#fbbf24'] });
             }, 400);
+
+            // GTM DataLayer conversion push
+            const params = new URLSearchParams(window.location.search);
+            if (params.has('panels')) {
+                window.dataLayer = window.dataLayer || [];
+                window.dataLayer.push({
+                    'event': 'lead_calculadora_completado',
+                    'paneles_estimados': params.get('panels'),
+                    'inversion_estimada': params.get('investment'),
+                    'roi_estimado': params.get('roi')
+                });
+            }
         });
     </script>
 </body>
