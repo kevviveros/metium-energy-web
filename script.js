@@ -136,7 +136,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 investment: data.investment,
                 roi:        data.roi,
                 co2:        data.co2,
-                trees:      data.trees
+                trees:      data.trees,
+                rango_gasto: gastoCFE.value
             });
 
             // Enviar a Netlify y luego redirigir

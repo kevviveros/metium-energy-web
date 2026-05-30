@@ -525,10 +525,13 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     function finalSubmit(event) {
         event.preventDefault();
         
+        const consumption = document.getElementById('consumption').value;
+        
         // Push event to GTM DataLayer
         window.dataLayer = window.dataLayer || [];
         window.dataLayer.push({
-            'event': 'formulario_calculadora'
+            'event': 'formulario_calculadora',
+            'consumo_kwh': consumption
         });
         
         const message = `Hola, me gustaría calcular mis paneles`;
