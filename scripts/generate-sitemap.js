@@ -30,8 +30,10 @@ function generateSitemap() {
     htmlFiles.forEach(file => {
         let relativePath = path.relative(ROOT_DIR, file).replace(/\\/g, '/');
         
-        // Formatear la URL
-        let url = BASE_URL + relativePath;
+        // Formatear la URL (Remove .html for pretty URLs)
+        let cleanPath = relativePath.replace(/\.html$/, '');
+        let url = BASE_URL + cleanPath;
+        
         if (relativePath === 'index.html') url = BASE_URL;
         
         let priority = 0.8;
