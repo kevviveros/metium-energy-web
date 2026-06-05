@@ -111,10 +111,8 @@ document.addEventListener('DOMContentLoaded', () => {
             applyFormOrigin(anchor.dataset.origin);
         }
 
-        // Scroll suave — calcula offset preciso para evitar que el nav fijo tape la sección
-        const navbarHeight = (nav ? nav.offsetHeight : 80) + 20;
-        const targetTop = target.getBoundingClientRect().top + window.scrollY - navbarHeight;
-        window.scrollTo({ top: targetTop, behavior: 'smooth' });
+        // Scroll suave nativo — respeta scroll-margin-top y se ajusta a cambios de layout (imágenes lazy)
+        target.scrollIntoView({ behavior: 'smooth' });
 
         // ── UX extras al llegar al formulario ──────────────────────────────
         if (href === '#formulario') {
