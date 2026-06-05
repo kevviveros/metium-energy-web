@@ -870,6 +870,62 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             </div>
         </section>
 
+        <!-- FORMULARIO (V3.0) -->
+        <section id="formulario" class="section alt-bg">
+            <div class="container narrow">
+                <div class="section-header">
+                    <h2>Cotiza tus paneles solares</h2>
+                    <p>Obtén un presupuesto exacto y personalizado según tu consumo actual. Descubre cuánto puedes
+                        ahorrar con tecnología solar de alta eficiencia.</p>
+                </div>
+                <div class="contact-form-container glass">
+                    <form id="solarCalculator" name="contacto_metium" method="POST" data-netlify="true"
+                        data-netlify-honeypot="bot-field">
+                        <input type="hidden" name="form-name" value="contacto_metium" />
+                        <input type="hidden" name="origen" id="formOrigen" value="general" />
+                        <p style="display:none;"><label>Don't fill this out: <input name="bot-field" /></label></p>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="nombreCompleto">Nombre Completo</label>
+                                <input type="text" id="nombreCompleto" name="nombre" class="form-control"
+                                    placeholder="Ej. Juan Pérez" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="telefono">Número WhatsApp</label>
+                                <input type="tel" id="telefono" name="whatsapp" class="form-control"
+                                    placeholder="10 dígitos" required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="correoExp">Correo Electrónico</label>
+                            <input type="email" id="correoExp" name="email" class="form-control"
+                                placeholder="tu@correo.com" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="gastoCFE">Gasto Bimestral de CFE</label>
+                            <select id="gastoCFE" name="rango_gasto" class="form-control" required>
+                                <option value="" disabled selected>Selecciona tu rango de pago</option>
+                                <option value="menos-1000">Menos de $1,000</option>
+                                <option value="1000-2500">$1,000 – $2,500</option>
+                                <option value="2500-5000">$2,500 – $5,000</option>
+                                <option value="5000-10000">$5,000 – $10,000</option>
+                                <option value="mas-10000">Más de $1,0000</option>
+                            </select>
+                        </div>
+                        <div class="form-check">
+                            <input type="checkbox" id="privacidad" name="aceptar_privacidad" required>
+                            <label for="privacidad">Acepto la <a href="#privacidad"
+                                    style="color:var(--accent-blue); text-decoration:underline;">Política de
+                                    Privacidad</a></label>
+                        </div>
+                        <button type="submit" id="btnSubmit" class="btn btn-primary full-width"
+                            style="margin-top:1.5rem; padding: 1.2rem; font-size: 1.1rem; border-radius: 1rem;">Calcular
+                            Mi Ahorro</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+
         <!-- FAQ (V3.0) -->
         <section id="faq" class="section">
             <div class="container narrow">
@@ -937,61 +993,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             </div>
         </section>
 
-        <!-- FORMULARIO (V3.0) -->
-        <section id="formulario" class="section alt-bg">
-            <div class="container narrow">
-                <div class="section-header">
-                    <h2>Cotiza tus paneles solares</h2>
-                    <p>Obtén un presupuesto exacto y personalizado según tu consumo actual. Descubre cuánto puedes
-                        ahorrar con tecnología solar de alta eficiencia.</p>
-                </div>
-                <div class="contact-form-container glass">
-                    <form id="solarCalculator" name="contacto_metium" method="POST" data-netlify="true"
-                        data-netlify-honeypot="bot-field">
-                        <input type="hidden" name="form-name" value="contacto_metium" />
-                        <input type="hidden" name="origen" id="formOrigen" value="general" />
-                        <p style="display:none;"><label>Don't fill this out: <input name="bot-field" /></label></p>
-                        <div class="form-row">
-                            <div class="form-group">
-                                <label for="nombreCompleto">Nombre Completo</label>
-                                <input type="text" id="nombreCompleto" name="nombre" class="form-control"
-                                    placeholder="Ej. Juan Pérez" required>
-                            </div>
-                            <div class="form-group">
-                                <label for="telefono">Número WhatsApp</label>
-                                <input type="tel" id="telefono" name="whatsapp" class="form-control"
-                                    placeholder="10 dígitos" required>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label for="correoExp">Correo Electrónico</label>
-                            <input type="email" id="correoExp" name="email" class="form-control"
-                                placeholder="tu@correo.com" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="gastoCFE">Gasto Bimestral de CFE</label>
-                            <select id="gastoCFE" name="rango_gasto" class="form-control" required>
-                                <option value="" disabled selected>Selecciona tu rango de pago</option>
-                                <option value="menos-1000">Menos de $1,000</option>
-                                <option value="1000-2500">$1,000 – $2,500</option>
-                                <option value="2500-5000">$2,500 – $5,000</option>
-                                <option value="5000-10000">$5,000 – $10,000</option>
-                                <option value="mas-10000">Más de $1,0000</option>
-                            </select>
-                        </div>
-                        <div class="form-check">
-                            <input type="checkbox" id="privacidad" name="aceptar_privacidad" required>
-                            <label for="privacidad">Acepto la <a href="#privacidad"
-                                    style="color:var(--accent-blue); text-decoration:underline;">Política de
-                                    Privacidad</a></label>
-                        </div>
-                        <button type="submit" id="btnSubmit" class="btn btn-primary full-width"
-                            style="margin-top:1.5rem; padding: 1.2rem; font-size: 1.1rem; border-radius: 1rem;">Calcular
-                            Mi Ahorro</button>
-                    </form>
-                </div>
-            </div>
-        </section>
     </main>
 
     <footer class="main-footer">
