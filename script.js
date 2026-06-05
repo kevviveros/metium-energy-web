@@ -103,16 +103,15 @@ document.addEventListener('DOMContentLoaded', () => {
         const target = document.getElementById(href.slice(1));
         if (!target) return;
 
-        e.preventDefault();
+        // Permitir el comportamiento nativo del navegador para anclas (es más robusto frente a cambios de layout)
+        // NOTA: No llamamos e.preventDefault();
+        
         closeMenu();
 
         // Personalizar formulario según el botón que originó el clic
         if (href === '#formulario') {
             applyFormOrigin(anchor.dataset.origin);
         }
-
-        // Scroll suave nativo — respeta scroll-margin-top y se ajusta a cambios de layout (imágenes lazy)
-        target.scrollIntoView({ behavior: 'smooth' });
 
         // ── UX extras al llegar al formulario ──────────────────────────────
         if (href === '#formulario') {
