@@ -47,35 +47,20 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // --- Smooth Scroll ---
+    // --- Smooth Scroll nativo via CSS (scroll-padding-top: 110px en html) ---
+    // El navegador gestiona el scroll a anclas directamente.
+    // Solo cerramos el menú móvil si el enlace es interno.
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function (e) {
+        anchor.addEventListener('click', function () {
             const href = this.getAttribute('href');
             if (href === '#') return;
-            e.preventDefault();
-            const target = document.querySelector(href);
-            if (target) {
-                const top = target.getBoundingClientRect().top + (window.scrollY || window.pageYOffset) - 100;
-                window.scrollTo({ top, behavior: 'smooth' });
+            // Cerrar nav mobile si está abierto
+            const navLinksEl = document.getElementById('navLinks');
+            if (navLinksEl && navLinksEl.classList.contains('active')) {
+                navLinksEl.classList.remove('active');
             }
         });
     });
-
-    // --- Manejo de scroll para hashes al cargar la página (evita desfases por carga de imágenes/fuentes) ---
-    const scrollToHashOnLoad = () => {
-        if (window.location.hash) {
-            const target = document.querySelector(window.location.hash);
-            if (target) {
-                setTimeout(() => {
-                    const top = target.getBoundingClientRect().top + (window.scrollY || window.pageYOffset) - 100;
-                    window.scrollTo({ top, behavior: 'smooth' });
-                }, 200); // Pequeño delay para que se renderice la altura correcta tras cargar imágenes y Lucide
-            }
-        }
-    };
-
-    // Ejecutar al cargar completamente todos los recursos (imágenes, fuentes, etc.)
-    window.addEventListener('load', scrollToHashOnLoad);
 
     // --- Cálculo solar por rango de recibo ---
     const solarData = {
