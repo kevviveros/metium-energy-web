@@ -314,6 +314,8 @@ nav.glass.scrolled {
     background: var(--bg-dark);
     color: #fff;
     padding: 6rem 0 3rem;
+    /* padding-bottom grande para que #formulario pueda scrollear al tope del viewport */
+    padding-bottom: 60vh;
 }
 
 .footer-cta {
