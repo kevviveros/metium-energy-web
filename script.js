@@ -103,15 +103,29 @@ document.addEventListener('DOMContentLoaded', () => {
         const target = document.getElementById(href.slice(1));
         if (!target) return;
 
-        // Permitir el comportamiento nativo del navegador para anclas (es más robusto frente a cambios de layout)
-        // NOTA: No llamamos e.preventDefault();
+        e.preventDefault();
         
+        // Actualizamos la URL sin causar el salto nativo abrupto
+        if (window.history && window.history.pushState) {
+            window.history.pushState(null, null, href);
+        }
+
         closeMenu();
 
         // Personalizar formulario según el botón que originó el clic
         if (href === '#formulario') {
             applyFormOrigin(anchor.dataset.origin);
         }
+
+        // ── SCROLL "A PRUEBA DE BALAS" (MISSILE TRACKING) ──
+        // 1. Inicia el viaje hacia el objetivo.
+        target.scrollIntoView({ behavior: 'smooth' });
+
+        // 2. Correcciones en vuelo (Double-Check):
+        // Si la barra de Android se oculta o alguna fuente estira la página 
+        // mientras bajamos, esto recalcula y corrige el destino casi invisiblemente.
+        setTimeout(() => { target.scrollIntoView({ behavior: 'smooth' }); }, 500);
+        setTimeout(() => { target.scrollIntoView({ behavior: 'smooth' }); }, 1200);
 
         // ── UX extras al llegar al formulario ──────────────────────────────
         if (href === '#formulario') {
