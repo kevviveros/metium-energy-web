@@ -139,7 +139,7 @@
 
     /* Footer */
     .footer-cta h2        { font-size: clamp(1.4rem, 6vw, 1.8rem); }
-    .main-footer          { padding: 4rem 0 2rem; }
+    .main-footer          { padding-top: 4rem; padding-bottom: 60vh; }
 
     /* Nav mobile — Botón completo */
     .nav-cta-btn span     { display: inline; font-size: 0.75rem; }
