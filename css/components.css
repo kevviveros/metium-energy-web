@@ -7,6 +7,16 @@
     box-shadow: var(--shadow-premium);
 }
 
+/* Form Highlight: pulso de brillo al llegar al formulario via botón Cotizar */
+@keyframes formHighlight {
+    0%   { box-shadow: var(--shadow-premium); border-color: var(--glass-border); }
+    35%  { box-shadow: 0 0 0 6px rgba(29, 78, 216, 0.18), var(--shadow-float); border-color: rgba(29, 78, 216, 0.45); }
+    100% { box-shadow: var(--shadow-premium); border-color: var(--glass-border); }
+}
+.form-highlight {
+    animation: formHighlight 1.6s ease-out forwards;
+}
+
 /* Buttons */
 .btn {
     display: inline-flex;

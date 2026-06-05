@@ -183,7 +183,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                             todo el estado. Equipos de alta calidad, garantía de 25 años y retorno de inversión de hasta
                             1.8 años.</p>
                         <div class="hero-btns animate-fade-in">
-                            <a href="#formulario" class="btn btn-primary">Cotizar ahora <i
+                            <a href="#formulario" class="btn btn-primary" data-origin="general">Cotizar ahora <i
                                     data-lucide="arrow-right"></i></a>
                             <a href="https://wa.me/5212282100749?text=Hola!%20Quiero%20informaci%C3%B3n%20sobre%20paneles%20solares"
                                 class="btn btn-secondary">Hablar con asesor</a>
@@ -462,7 +462,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                                 <p>La tarifa Doméstica de Alto Consumo es la más cara. Un sistema solar bien
                                     dimensionado la elimina y deja tu recibo en menos de $100 bimestrales.</p>
                             </div>
-                            <a href="#formulario" class="btn btn-primary">Cotizar para casa</a>
+                            <a href="#formulario" class="btn btn-primary" data-origin="casa">Cotizar para casa</a>
                         </div>
                     </div>
                 </div>
@@ -495,7 +495,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                                 <p>Bajo la Ley del ISR en México, la inversión en energías renovables es totalmente
                                     deducible, acelerando tu retorno de inversión.</p>
                             </div>
-                            <a href="#formulario" class="btn btn-primary">Cotizar para empresa</a>
+                            <a href="#formulario" class="btn btn-primary" data-origin="empresa">Cotizar para empresa</a>
                         </div>
                     </div>
                 </div>
@@ -728,7 +728,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                             <li><i data-lucide="circle-check"></i> Deducción fiscal al 100% en el primer año</li>
                             <li><i data-lucide="circle-check"></i> El mayor ahorro acumulado a largo plazo</li>
                         </ul>
-                        <a href="#formulario" class="btn btn-primary full-width">Solicitar presupuesto</a>
+                        <a href="#formulario" class="btn btn-primary full-width" data-origin="financiamiento">Solicitar presupuesto</a>
                     </div>
                     <div class="payment-card glass">
                         <div class="pay-icon"><i data-lucide="trending-up"></i></div>
@@ -743,7 +743,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                             <li><i data-lucide="circle-check"></i> Sin penalización por pagos anticipados</li>
                             <li><i data-lucide="circle-check"></i> Flexibilidad con buró de crédito</li>
                         </ul>
-                        <a href="#formulario" class="btn btn-primary full-width">Ver planes de financiamiento</a>
+                        <a href="#formulario" class="btn btn-primary full-width" data-origin="financiamiento">Ver planes de financiamiento</a>
                     </div>
                 </div>
             </div>
@@ -949,7 +949,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                     <form id="solarCalculator" name="contacto_metium" method="POST" data-netlify="true"
                         data-netlify-honeypot="bot-field">
                         <input type="hidden" name="form-name" value="contacto_metium" />
-                        <p style="display:none;"><label>Don’t fill this out: <input name="bot-field" /></label></p>
+                        <input type="hidden" name="origen" id="formOrigen" value="general" />
+                        <p style="display:none;"><label>Don't fill this out: <input name="bot-field" /></label></p>
                         <div class="form-row">
                             <div class="form-group">
                                 <label for="nombreCompleto">Nombre Completo</label>
@@ -997,7 +998,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <div class="container">
             <div class="footer-cta">
                 <h2>¿Listo para que tu ahorro sea real?</h2>
-                <a href="#formulario" class="btn btn-primary">Iniciar estudio gratuito</a>
+                <a href="#formulario" class="btn btn-primary" data-origin="general">Iniciar estudio gratuito</a>
             </div>
             <div class="footer-bottom">
                 <p>&copy; 2026 Metium Energy. Expertos en ingeniería y <strong>venta de paneles solares</strong> en
