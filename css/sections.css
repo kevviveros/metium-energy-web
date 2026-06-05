@@ -1,4 +1,15 @@
-/* Scroll offset para evitar que el navbar fijo tape la sección al hacer scroll con ancla */
+/* Scroll offset para evitar que el navbar fijo tape las secciones al hacer scroll con ancla */
+#inicio,
+#beneficios,
+#como-funciona,
+#servicios,
+#sobre-nosotros,
+#proceso,
+#incluye,
+#pago,
+#testimonios,
+#blog,
+#faq,
 #formulario {
     scroll-margin-top: 110px;
 }

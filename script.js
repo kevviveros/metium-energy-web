@@ -47,18 +47,31 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // --- Smooth Scroll nativo via CSS (scroll-padding-top: 110px en html) ---
-    // El navegador gestiona el scroll a anclas directamente.
-    // Solo cerramos el menú móvil si el enlace es interno.
+    // --- Smooth Scroll via scrollIntoView (respeta scroll-margin-top del CSS) ---
+    // Funciona en todos los botones de "Cotizar" y enlaces del nav, incluyendo móvil.
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function () {
+        anchor.addEventListener('click', function (e) {
             const href = this.getAttribute('href');
             if (href === '#') return;
+
+            const target = document.querySelector(href);
+            if (!target) return;
+
+            e.preventDefault();
+
             // Cerrar nav mobile si está abierto
             const navLinksEl = document.getElementById('navLinks');
             if (navLinksEl && navLinksEl.classList.contains('active')) {
                 navLinksEl.classList.remove('active');
+                const icon = document.querySelector('#navToggle i');
+                if (icon) {
+                    icon.setAttribute('data-lucide', 'menu');
+                    if (typeof lucide !== 'undefined') lucide.createIcons();
+                }
             }
+
+            // scrollIntoView respeta automáticamente scroll-margin-top definido en CSS
+            target.scrollIntoView({ behavior: 'smooth', block: 'start' });
         });
     });
 
