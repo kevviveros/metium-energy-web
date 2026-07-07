@@ -222,9 +222,26 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
         </div>
         <h1>¡Cálculo realizado con éxito!</h1>
-        <p class="subtitle" style="color: #1d4ed8; font-weight: 700; background: #eff6ff; padding: 0.8rem 1.5rem; border-radius: 1rem; display: inline-block; margin-bottom: 2.5rem;">
+        <p class="subtitle" style="color: #1d4ed8; font-weight: 700; background: #eff6ff; padding: 0.8rem 1.5rem; border-radius: 1rem; display: inline-block; margin-bottom: 1.5rem;">
             Un asesor experto se pondrá en contacto contigo muy pronto.
         </p>
+
+        <!-- Caja de Resultados Dinámicos -->
+        <div class="results-box" id="results-display" style="display: none; border: 1px solid #e2e8f0; max-width: 500px; margin: 0 auto 2.5rem;">
+            <h3 style="color: #0f172a; font-weight: 800; font-size: 1.1rem; border-bottom: 2px solid #e2e8f0; padding-bottom: 0.75rem; margin-bottom: 1rem;">Tu Estimación de Ahorro</h3>
+            <div class="result-row">
+                <span class="label">Paneles sugeridos:</span>
+                <span class="value" id="res-panels" style="color: #10b981; font-weight: 800; font-size: 1.1rem;">-</span>
+            </div>
+            <div class="result-row">
+                <span class="label">Inversión estimada:</span>
+                <span class="value" id="res-investment">-</span>
+            </div>
+            <div class="result-row">
+                <span class="label">Retorno de inversión (ROI):</span>
+                <span class="value" id="res-roi">-</span>
+            </div>
+        </div>
 
         <div style="display: flex; flex-direction: column; gap: 1.5rem; align-items: center; margin-top: 1rem;">
             <a href="https://wa.me/5212282100749?text=Hola%2C%20me%20gustar%C3%ADa%20cotizar%20mis%20paneles" class="back-btn" style="background: #10b981; width: auto; padding: 0.8rem 1.5rem; font-size: 0.95rem; justify-content: center; box-shadow: 0 10px 25px rgba(16, 185, 129, 0.3); transform: translateY(-2px);">
@@ -248,9 +265,22 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                 confetti({ particleCount: 180, spread: 90, origin: { y: 0.5 }, colors: ['#3b82f6', '#1e293b', '#60a5fa', '#ffd700', '#10b981', '#ffffff', '#fbbf24'] });
             }, 400);
 
-            // GTM DataLayer conversion push
+            // GTM DataLayer conversion push & display results
             const params = new URLSearchParams(window.location.search);
             if (params.has('panels')) {
+                // Mostrar la caja de resultados
+                const resultsDisplay = document.getElementById('results-display');
+                if (resultsDisplay) resultsDisplay.style.display = 'block';
+
+                // Rellenar datos
+                const resPanels = document.getElementById('res-panels');
+                const resInvestment = document.getElementById('res-investment');
+                const resRoi = document.getElementById('res-roi');
+
+                if (resPanels) resPanels.textContent = params.get('panels') + ' paneles';
+                if (resInvestment) resInvestment.textContent = params.get('investment');
+                if (resRoi) resRoi.textContent = params.get('roi');
+
                 window.dataLayer = window.dataLayer || [];
                 window.dataLayer.push({
                     'event': 'formulario_principal',

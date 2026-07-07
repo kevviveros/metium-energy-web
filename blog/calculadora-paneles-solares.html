@@ -325,10 +325,16 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             <div class="num-circle">2</div>
             <h2>Desbloquea tu Reporte Técnico</h2>
           </div>
-          <form onsubmit="finalSubmit(event)" id="lead-form">
-            <div class="form-group"><label>Nombre Completo</label><input type="text" id="name" class="input-field" required></div>
-            <div class="form-group"><label>WhatsApp (10 dígitos)</label><input type="tel" id="whatsapp" class="input-field" pattern="[0-9]{10}" required></div>
-            <div class="form-group"><label>Email</label><input type="email" id="email" class="input-field" required></div>
+          <form onsubmit="finalSubmit(event)" id="lead-form" name="calculadora_leads" method="POST" data-netlify="true" data-netlify-honeypot="bot-field">
+            <input type="hidden" name="form-name" value="calculadora_leads" />
+            <input type="hidden" name="consumo_kwh" id="form-consumption" />
+            <input type="hidden" name="ubicacion" id="form-location" />
+            <input type="hidden" name="paneles_estimados" id="form-panels" />
+            <input type="hidden" name="ahorro_anual" id="form-savings" />
+            <p style="display:none;"><label>Don't fill this out: <input name="bot-field" /></label></p>
+            <div class="form-group"><label>Nombre Completo</label><input type="text" id="name" name="nombre" class="input-field" required></div>
+            <div class="form-group"><label>WhatsApp (10 dígitos)</label><input type="tel" id="whatsapp" name="whatsapp" class="input-field" pattern="[0-9]{10}" required></div>
+            <div class="form-group"><label>Email</label><input type="email" id="email" name="email" class="input-field" required></div>
             <button type="submit" class="primary-btn" style="background: linear-gradient(135deg, #10b981 0%, #059669 100%); box-shadow: 0 15px 30px rgba(16, 185, 129, 0.3);">Obtener Cotización <i data-lucide="arrow-right"></i></button>
           </form>
           <button onclick="backToStep1()" style="background:none; border:none; color:var(--brand-blue); cursor:pointer; display:block; margin: 1rem auto">← Editar consumo</button>
@@ -525,19 +531,46 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     function finalSubmit(event) {
         event.preventDefault();
         
+        const form = document.getElementById('lead-form');
         const consumption = document.getElementById('consumption').value;
+        const locationSelect = document.getElementById('location');
+        const locationName = locationSelect.options[locationSelect.selectedIndex].text;
+        const panelCount = document.getElementById('panel-count').textContent;
+        const annualSavings = document.getElementById('savings-val').textContent;
+        
+        // Asignar valores a los campos ocultos
+        document.getElementById('form-consumption').value = consumption;
+        document.getElementById('form-location').value = locationName;
+        document.getElementById('form-panels').value = panelCount;
+        document.getElementById('form-savings').value = annualSavings;
         
         // Push event to GTM DataLayer
         window.dataLayer = window.dataLayer || [];
         window.dataLayer.push({
             'event': 'formulario_calculadora',
-            'consumo_kwh': consumption
+            'consumo_kwh': consumption,
+            'paneles_estimados': panelCount,
+            'ahorro_anual': annualSavings
         });
         
-        const message = `Hola, me gustaría calcular mis paneles`;
-        setTimeout(() => {
-            window.location.href = `https://wa.me/5212282100749?text=${message}`;
-        }, 300);
+        // Enviar a Netlify mediante Fetch API
+        fetch(window.location.pathname, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+            body: new URLSearchParams(new FormData(form)).toString()
+        })
+        .then(() => {
+            redirectToWhatsApp(consumption, panelCount);
+        })
+        .catch(() => {
+            redirectToWhatsApp(consumption, panelCount);
+        });
+    }
+
+    function redirectToWhatsApp(consumption, panelCount) {
+        const name = document.getElementById('name').value;
+        const message = `Hola! Soy ${name}. Usé la calculadora de Metium y para mi consumo de ${consumption} kWh necesito aprox ${panelCount} paneles. Me interesa una cotización formal.`;
+        window.location.href = `https://wa.me/5212282100749?text=${encodeURIComponent(message)}`;
     }
     liveUpdate();
   </script>
