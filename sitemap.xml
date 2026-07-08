@@ -31,4 +31,20 @@
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
+
+  <!-- Comparativa: Mejores Paneles Veracruz -->
+  <url>
+    <loc>https://metium.com.mx/blog/cuales-son-los-mejores-paneles-solares-veracruz</loc>
+    <lastmod>2026-07-08</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  
+  <!-- Comparativa: Mejores Paneles Xalapa -->
+  <url>
+    <loc>https://metium.com.mx/blog/cuales-son-los-mejores-paneles-solares-xalapa</loc>
+    <lastmod>2026-07-08</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
 </urlset>
