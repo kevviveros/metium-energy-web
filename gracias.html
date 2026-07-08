@@ -234,10 +234,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                 <span class="value" id="res-panels" style="color: #10b981; font-weight: 800; font-size: 1.1rem;">-</span>
             </div>
             <div class="result-row">
-                <span class="label">Inversión estimada:</span>
-                <span class="value" id="res-investment">-</span>
-            </div>
-            <div class="result-row">
                 <span class="label">Retorno de inversión (ROI):</span>
                 <span class="value" id="res-roi">-</span>
             </div>
@@ -274,11 +270,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
                 // Rellenar datos
                 const resPanels = document.getElementById('res-panels');
-                const resInvestment = document.getElementById('res-investment');
                 const resRoi = document.getElementById('res-roi');
 
                 if (resPanels) resPanels.textContent = params.get('panels') + ' paneles';
-                if (resInvestment) resInvestment.textContent = params.get('investment');
                 if (resRoi) resRoi.textContent = params.get('roi');
 
                 window.dataLayer = window.dataLayer || [];
